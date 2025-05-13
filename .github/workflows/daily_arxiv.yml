@@ -1,0 +1,30 @@
+name: Daily Arxiv AI RSS Fetch
+
+on:
+  schedule:
+    - cron: '30 4 * * 1-5'  # 每周一至五 UTC 04:30，即北京时间 12:30
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install feedparser
+
+      - name: Run arxiv fetcher
+        run: python arxiv_ai_fetcher.py
+
+      - name: Upload CSV Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: arxiv-csv
+          path: output/
