@@ -69,8 +69,8 @@ while tweet_count < MAX_TWEETS:
 
     for tweet in response.data:
         created_time = tweet.created_at.replace(tzinfo=timezone.utc)
-        if created_time < three_days_ago:
-            continue
+        # if created_time < three_days_ago:
+        #     continue
 
         author = users.get(tweet.author_id)
         author_name = author.username if author else 'unknown'
