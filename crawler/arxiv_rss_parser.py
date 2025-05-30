@@ -4,6 +4,8 @@ import csv
 import os
 from html import unescape
 import re
+import requests
+from io import BytesIO
 
 if __name__ == "__main__":
     print("🚀 开始解析 RSS...")
@@ -14,8 +16,12 @@ if __name__ == "__main__":
     output_path = os.path.join(output_dir, csv_filename)
 
     # ========== 解析 RSS ==========
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36'
+    }
     RSS_URL = "https://export.arxiv.org/rss/cs.AI"
-    feed = feedparser.parse(RSS_URL)
+    response = requests.get(RSS_URL, headers=headers)
+    feed = feedparser.parse(BytesIO(response.content))
 
     def clean_html(text):
         text = unescape(text)
