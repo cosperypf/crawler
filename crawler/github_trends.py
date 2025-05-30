@@ -6,11 +6,11 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 # 保存路径
-BASE_PATH = "/Users/cosper/MyFolder/5.ai/generate_docs/github_trends"
+BASE_PATH = "./generate_docs/github_trends"
 os.makedirs(BASE_PATH, exist_ok=True)
 
 # 获取当前日期
-TODAY = datetime.datetime.today().strftime("%Y-%m-%d")
+TODAY = datetime.datetime.today().strftime("%Y%m%d")
 
 # AI关键词列表（可扩展）
 AI_KEYWORDS = ['ai', 'artificial intelligence', 'machine learning', 'deep learning',
@@ -113,14 +113,13 @@ def save_to_csv_md(data_by_trend):
     csv_path = os.path.join(BASE_PATH, f"github_trends_{TODAY}.csv")
     df = pd.DataFrame(csv_rows)
     df.to_csv(csv_path, index=False)
-
-    # 保存 Markdown
-    md_path = os.path.join(BASE_PATH, f"github_trends_{TODAY}.md")
-    with open(md_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(md_lines))
-
     print(f"✅ 已保存 CSV：{csv_path}")
-    print(f"✅ 已保存 MD：{md_path}")
+
+    # # 保存 Markdown
+    # md_path = os.path.join(BASE_PATH, f"github_trends_{TODAY}.md")
+    # with open(md_path, "w", encoding="utf-8") as f:
+    #     f.write("\n".join(md_lines))
+    # print(f"✅ 已保存 MD：{md_path}")
 
 
 def main():

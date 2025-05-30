@@ -1,4 +1,6 @@
 tmp/*
+generate_docs/*
+reports/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

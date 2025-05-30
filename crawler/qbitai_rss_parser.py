@@ -8,7 +8,7 @@ import re
 if __name__ == "__main__":
     print("🚀 开始解析量子位 RSS...")
     # ========== 设置路径 ==========
-    output_dir = "/Users/cosper/MyFolder/5.ai/generate_docs/qbitai"
+    output_dir = "./generate_docs/qbitai"
     os.makedirs(output_dir, exist_ok=True)
     csv_filename = f"qbitai_{datetime.now().strftime('%Y%m%d')}.csv"
     output_path = os.path.join(output_dir, csv_filename)

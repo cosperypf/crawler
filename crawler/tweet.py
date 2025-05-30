@@ -37,7 +37,7 @@ three_days_ago = utc_now - timedelta(days=3)
 date_str = datetime.now().strftime('%Y-%m-%d')
 formatted_date = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
 
-SAVE_DIR = Path('/Users/cosper/MyFolder/5.ai/generate_docs/x')
+SAVE_DIR = Path('./generate_docs/x')
 SAVE_DIR.mkdir(parents=True, exist_ok=True)
 csv_path = SAVE_DIR / f'x_{date_str}.csv'
 md_path = SAVE_DIR / f'x_{date_str}.md'
